@@ -1,7 +1,4 @@
 // Assuming firebaseConfig is defined earlier in your code or in another file
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-
 document.querySelectorAll('area').forEach(area => {
   area.addEventListener('click', function(e) {
     e.preventDefault();
@@ -57,13 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
       cursorCoordsText.style.top = `${e.pageY + 10}px`;
     });
   
-    // ... (rest of your code for creating overlays for each area)
+    document.querySelectorAll('area').forEach(area => {
+      const overlay = createCircleOverlay(area.getAttribute('coords'));
+      imageContainer.appendChild(overlay);
+    });
   });
-
-document.addEventListener('DOMContentLoaded', () => {
-  const imageContainer = document.querySelector('.image-container');
-  document.querySelectorAll('area').forEach(area => {
-    const overlay = createCircleOverlay(area.getAttribute('coords'));
-    imageContainer.appendChild(overlay);
-  });
-});
