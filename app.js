@@ -26,7 +26,7 @@ function createCircleOverlay(coords) {
   overlay.style.width = `${radius * 2}px`;
   overlay.style.height = `${radius * 2}px`;
   overlay.style.borderRadius = '50%'; // Makes the div circular
-  overlay.style.backgroundColor = 'rgba(0, 255, 0, 0.0)'; // Green with transparency
+  overlay.style.backgroundColor = 'rgba(0, 255, 0, 0.5)'; // Green with transparency
   overlay.style.zIndex = '10'; // Ensure it's on top of the image but below any popups
   overlay.style.pointerEvents = 'none'; // Allows clicking through the div
   return overlay;
