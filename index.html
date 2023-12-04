@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stadium Seat Selection</title>
+  <style>
+    body {
+      background-color: black;
+      color: white; /* Ensures text is readable on a black background */
+    }
+    /* Add additional styles here */
+  </style>
+  <script src="/__/firebase/8.6.1/firebase-app.js"></script>
+  <script src="/__/firebase/8.6.1/firebase-firestore.js"></script>
+  <script src="/__/firebase/init.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+    <div class="image-container">
+        <img src="stadium_map.png" usemap="#stadiumMap" style="position: relative;">
+        <map name="stadiumMap">
+          <!-- Area definitions -->
+          <area id="zone-C" shape="circle" coords="110,280,20" href="#" data-zone="C">
+          <area id="zone-D" shape="circle" coords="110,360,20" href="#" data-zone="D">
+          <area id="zone-E" shape="circle" coords="110,440,20" href="#" data-zone="E">
+          <area id="zone-F" shape="circle" coords="110,480,20" href="#" data-zone="F">
+        </map>
+    </div>
+
+  <!-- Add a div to display seat status -->
+  <div id="seatStatus"></div>
+</body>
+</html>
