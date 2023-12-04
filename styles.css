@@ -1,13 +1,47 @@
 body {
     background-color: black;
     color: white;
-}
-
-#stadiumMap {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .image-container {
     position: relative;
-}
+    max-width: 730px; /* Max width set to 730px */
+    margin: auto; /* Center the container */
+  }
   
-.image-container {
-position: relative;
-}
+  .image-container img {
+    width: 100%;
+    height: auto;
+  }
   
+  .image-container table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  .image-container table, .image-container th, .image-container td {
+    border: 1px solid white;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px; /* Spacing between image and table */
+  }
+  
+  .image-container, #seatStatus {
+    flex-basis: auto;
+  }
+  
+  #seatStatus {
+    max-width: 500px; /* Max width for the table */
+    width: 100%;
+    margin-top: 0; /* Remove if previously set */
+  }
