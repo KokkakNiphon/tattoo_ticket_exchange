@@ -41,7 +41,5 @@ body {
   }
   
   #seatStatus {
-    max-width: 500px; /* Max width for the table */
     width: 100%;
-    margin-top: 0; /* Remove if previously set */
   }

@@ -22,21 +22,24 @@ function generateTableForZone(zone) {
   const table = document.createElement('table');
   table.style.width = '100%';
   table.style.borderCollapse = 'collapse';
-  table.innerHTML = `<tr><th>ที่นั่ง</th><th>วันที่</th><th>คอนแท็กติดต่อ</th><th>ที่หาแลก</th><th>หมายเหตุ</th></tr>`;
+  table.innerHTML = `<tr><th>โซนที่มี</th><th>ที่นั่ง</th><th>วันที่</th><th>คอนแท็กติดต่อ</th><th>ที่หาแลก</th><th>หมายเหตุ</th></tr>`;
 
   const rowData = seatData.find(row => row.โซนที่มี === zone);
   if (rowData) {
     const row = table.insertRow();
+    const zoneCell = row.insertCell();
     const seatCell = row.insertCell();
     const dateCell = row.insertCell();
     const contactCell = row.insertCell();
     const targetCell = row.insertCell();
     const noteCell = row.insertCell();
+    zoneCell.textContent = rowData.โซนที่มี;
     seatCell.textContent = rowData.ที่นั่ง;
     dateCell.textContent = rowData.วันที่;
     contactCell.textContent = rowData.คอนแท็กติดต่อ;
     targetCell.textContent = rowData.ที่หาแลก;
     noteCell.textContent = rowData.หมายเหตุ;
+    zoneCell.style.border = '1px solid white';
     seatCell.style.border = '1px solid white';
     dateCell.style.border = '1px solid white';
     contactCell.style.border = '1px solid white';
@@ -44,7 +47,7 @@ function generateTableForZone(zone) {
     noteCell.style.border = '1px solid white';
   } else {
     // In case no data is found for the zone
-    table.innerHTML += `<tr><td colspan="2">No data available for zone ${zone}</td></tr>`;
+    table.innerHTML += `<tr><td colspan="2">ไม่มีข้อมูลโซน ${zone}</td></tr>`;
   }
 
   return table;
