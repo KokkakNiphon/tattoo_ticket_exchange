@@ -3,13 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Stadium Seat Selection</title>
-  <style>
-    body {
-      background-color: black;
-      color: white; /* Ensures text is readable on a black background */
-    }
-    /* Add additional styles here */
-  </style>
+  <link rel="stylesheet" href="styles.css">
   <script src="/__/firebase/8.6.1/firebase-app.js"></script>
   <script src="/__/firebase/8.6.1/firebase-firestore.js"></script>
   <script src="/__/firebase/init.js"></script>
@@ -19,6 +13,7 @@
   <div class="container">
     <div class="image-container">
         <img src="stadium_map.png" usemap="#stadiumMap" style="position: relative;">
+        <a id="info-link" href="https://docs.google.com/spreadsheets/d/1_sanAKZ1OKOpaaLRXA-ebKO_-pJHL7Ph2Qw_XM3XgUQ" target="_blank">👉เพิ่มข้อมูลที่นี่👈</a>
         <map name="stadiumMap">
           <!-- Area definitions -->
           <area id="zone-C" shape="circle" coords="105,275,20" data-zone="C">

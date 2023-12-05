@@ -53,6 +53,56 @@ function generateTableForZone(zone) {
   return table;
 }
 
+function createCircleOverlay(coords) {
+  const [x, y, radius] = coords.split(',').map(Number);
+  const overlay = document.createElement('div');
+  overlay.style.position = 'absolute';
+  overlay.style.left = `${x - radius}px`;
+  overlay.style.top = `${y - radius}px`;
+  overlay.style.width = `${radius * 2}px`;
+  overlay.style.height = `${radius * 2}px`;
+  overlay.style.borderRadius = '50%'; // Makes the div circular
+  overlay.style.backgroundColor = 'rgba(150, 255, 0, 0.5)'; // Green with transparency
+  overlay.style.zIndex = '10'; // Ensure it's on top of the image but below any popups
+  overlay.style.pointerEvents = 'none'; // Allows clicking through the div
+  return overlay;
+}
+
+// function drawLine(fromZoneData, toZoneData) {
+//   const fromZone = document.querySelector(`area[data-zone="${fromZoneData}"]`);
+//   const toZone = document.querySelector(`area[data-zone="${toZoneData}"]`);
+
+//   if (!fromZone || !toZone) {
+//     console.error('Zones not found');
+//     return;
+//   }
+
+//   const fromCoords = fromZone.getAttribute('coords');
+//   const toCoords = toZone.getAttribute('coords');
+
+//   const line = createLineElement(fromCoords, toCoords);
+
+//   document.body.appendChild(line);
+// }
+
+// function createLineElement(start, end) {
+//   const [start_x, start_y, start_radius] = start.split(',').map(Number);
+//   const [end_x, end_y, end_radius] = end.split(',').map(Number);
+//   const line = document.createElement('div');
+//   line.className = 'line';
+
+//   const length = Math.sqrt((start_x - end_x) ** 2 + (start_y - end_y) ** 2);
+//   const angle = Math.atan2(end_y - start_y, end_x - start_x) * 180 / Math.PI;
+
+//   line.style.width = `${length}px`;
+//   line.style.transform = `rotate(${angle}deg)`;
+//   line.style.position = 'absolute';
+//   line.style.left = `${start_x}px`;
+//   line.style.top = `${start_y}px`;
+
+//   return line;
+// }
+
 // Modify the existing checkSeatStatus function
 function checkSeatStatus(zone) {
   console.log("Zone clicked:", zone);
@@ -66,12 +116,31 @@ function checkSeatStatus(zone) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('area').forEach(area => {
+  const imageContainer = document.querySelector('.image-container');
+  document.querySelectorAll('area').forEach(area => {
       area.addEventListener('click', function(e) {
-        e.preventDefault();
-        const zone = this.dataset.zone;
-        checkSeatStatus(zone);
+          e.preventDefault();
+          const zone = this.dataset.zone;
+          checkSeatStatus(zone);
+
+          // Clear any existing overlays before adding a new one
+          const existingOverlay = document.getElementById('zone-overlay');
+          if (existingOverlay) {
+              existingOverlay.remove();
+          }
+
+          const existingLine = document.getElementById('line');
+          if (existingLine) {
+            existingLine.remove();
+          }
+
+          // drawLine('A1', this.getAttribute('data-zone'));
+
+          // Create and append the new overlay
+          const overlay = createCircleOverlay(this.getAttribute('coords'));
+          overlay.id = 'zone-overlay'; // Assign an ID for easy removal later
+          imageContainer.appendChild(overlay);
       });
-    });
   });
+});
   

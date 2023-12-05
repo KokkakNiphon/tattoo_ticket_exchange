@@ -5,41 +5,20 @@ body {
     font-family: Arial, sans-serif;
   }
   
-  .image-container {
-    position: relative;
-    max-width: 730px; /* Max width set to 730px */
-    margin: auto; /* Center the container */
-  }
-  
-  .image-container img {
-    width: 100%;
-    height: auto;
-  }
-  
-  .image-container table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-  }
-  
-  .image-container table, .image-container th, .image-container td {
-    border: 1px solid white;
-    text-align: left;
-    padding: 8px;
-  }
-  
-  .container {
+  #info-link {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 20px; /* Spacing between image and table */
+    align-items: center;
+    color: rgb(128, 203, 156);
+    font-size: x-large;
   }
-  
-  .image-container, #seatStatus {
-    flex-basis: auto;
-  }
-  
+
   #seatStatus {
-    width: 100%;
+    margin-top: 10px;
+  }
+
+  .line {
+    background-color: white; /* Line color */
+    height: 2px; /* Line thickness */
+    z-index: 11;
   }
